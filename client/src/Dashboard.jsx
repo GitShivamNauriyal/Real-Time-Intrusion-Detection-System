@@ -246,96 +246,97 @@ function Dashboard() {
     }, []);
 
     return (
-        <div className="w-full max-w-3xl mx-auto shadow-xl rounded-3xl bg-gray-900/80 p-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-orange-400 tracking-tight text-center">
-                IDS Control Panel
-            </h1>
-            <div className="flex justify-center items-center mb-6">
-                <span className="mr-2 font-medium">Status:</span>
-                <span
-                    className={
-                        "px-3 py-1 rounded-full text-sm font-bold " +
-                        (status === "Running"
-                            ? "bg-green-600 text-white"
-                            : "bg-gray-700 text-orange-300")
-                    }
-                >
-                    {status}
-                </span>
-            </div>
-            {message && (
-                <div className="mb-6 p-3 rounded-lg bg-orange-900/70 text-orange-200 text-center font-semibold">
-                    {message}
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 text-gray-100 font-sans px-4 py-8">
+            <div className="w-full max-w-3xl mx-auto shadow-xl rounded-3xl bg-gray-900/80 p-8">
+                <h1 className="text-3xl md:text-4xl font-bold mb-4 text-orange-400 tracking-tight text-center">
+                    IDS Control Panel
+                </h1>
+                <div className="flex justify-center items-center mb-6">
+                    <span className="mr-2 font-medium">Status:</span>
+                    <span
+                        className={
+                            "px-3 py-1 rounded-full text-sm font-bold " +
+                            (status === "Running"
+                                ? "bg-green-600 text-white"
+                                : "bg-gray-700 text-orange-300")
+                        }
+                    >
+                        {status}
+                    </span>
                 </div>
-            )}
+                {message && (
+                    <div className="mb-6 p-3 rounded-lg bg-orange-900/70 text-orange-200 text-center font-semibold">
+                        {message}
+                    </div>
+                )}
 
-            {/* Start/Stop/Shutdown */}
-            <div className="flex flex-wrap gap-4 justify-center mb-8">
-                <button
-                    onClick={startIDS}
-                    className="px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold shadow transition disabled:opacity-60"
-                    disabled={isLoading || status === "Running"}
-                >
-                    Start IDS
-                </button>
-                <button
-                    onClick={stopIDS}
-                    className="px-6 py-2 bg-orange-700 hover:bg-orange-800 rounded-lg font-semibold shadow transition disabled:opacity-60"
-                    disabled={isLoading || status === "Stopped"}
-                >
-                    Stop IDS
-                </button>
-                <button
-                    onClick={shutdownIDS}
-                    className="px-6 py-2 bg-gray-800 hover:bg-red-600 rounded-lg font-semibold shadow transition disabled:opacity-60"
-                    disabled={isLoading}
-                >
-                    Shutdown IDS
-                </button>
-            </div>
-
-            {/* Block IP */}
-            <Section title="Block an IP">
-                <div className="flex gap-2">
-                    <input
-                        type="text"
-                        placeholder="IP Address"
-                        value={blockIp}
-                        onChange={(e) => setBlockIp(e.target.value)}
-                        className="px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-orange-400 outline-none text-gray-100 w-full"
-                    />
+                {/* Start/Stop/Shutdown */}
+                <div className="flex flex-wrap gap-4 justify-center mb-8">
                     <button
-                        onClick={blockIP}
-                        className="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold transition disabled:opacity-60"
+                        onClick={startIDS}
+                        className="px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold shadow transition disabled:opacity-60"
+                        disabled={isLoading || status === "Running"}
+                    >
+                        Start IDS
+                    </button>
+                    <button
+                        onClick={stopIDS}
+                        className="px-6 py-2 bg-orange-700 hover:bg-orange-800 rounded-lg font-semibold shadow transition disabled:opacity-60"
+                        disabled={isLoading || status === "Stopped"}
+                    >
+                        Stop IDS
+                    </button>
+                    <button
+                        onClick={shutdownIDS}
+                        className="px-6 py-2 bg-gray-800 hover:bg-red-600 rounded-lg font-semibold shadow transition disabled:opacity-60"
                         disabled={isLoading}
                     >
-                        Block
+                        Shutdown IDS
                     </button>
                 </div>
-            </Section>
 
-            {/* Unblock IP */}
-            <Section title="Unblock an IP">
-                <div className="flex gap-2">
-                    <input
-                        type="text"
-                        placeholder="IP Address"
-                        value={unblockIp}
-                        onChange={(e) => setUnblockIp(e.target.value)}
-                        className="px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-orange-400 outline-none text-gray-100 w-full"
-                    />
-                    <button
-                        onClick={unblockIP}
-                        className="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold transition disabled:opacity-60"
-                        disabled={isLoading}
-                    >
-                        Unblock
-                    </button>
-                </div>
-            </Section>
+                {/* Block IP */}
+                <Section title="Block an IP">
+                    <div className="flex gap-2">
+                        <input
+                            type="text"
+                            placeholder="IP Address"
+                            value={blockIp}
+                            onChange={(e) => setBlockIp(e.target.value)}
+                            className="px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-orange-400 outline-none text-gray-100 w-full"
+                        />
+                        <button
+                            onClick={blockIP}
+                            className="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold transition disabled:opacity-60"
+                            disabled={isLoading}
+                        >
+                            Block
+                        </button>
+                    </div>
+                </Section>
 
-            {/* Add Rule */}
-            {/*             
+                {/* Unblock IP */}
+                <Section title="Unblock an IP">
+                    <div className="flex gap-2">
+                        <input
+                            type="text"
+                            placeholder="IP Address"
+                            value={unblockIp}
+                            onChange={(e) => setUnblockIp(e.target.value)}
+                            className="px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-orange-400 outline-none text-gray-100 w-full"
+                        />
+                        <button
+                            onClick={unblockIP}
+                            className="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold transition disabled:opacity-60"
+                            disabled={isLoading}
+                        >
+                            Unblock
+                        </button>
+                    </div>
+                </Section>
+
+                {/* Add Rule */}
+                {/*             
             <Section title="Add Rule">
                 <div className="flex flex-col md:flex-row gap-2">
                     <input
@@ -370,8 +371,8 @@ function Dashboard() {
             </Section> 
             */}
 
-            {/* Existing Rules */}
-            {/*
+                {/* Existing Rules */}
+                {/*
              <Section title="Existing Rules">
                 {rules.length > 0 ? (
                     rules.map((rule) => (
@@ -400,28 +401,31 @@ function Dashboard() {
             </Section> 
             */}
 
-            {/* Blocked IPs */}
-            <Section title="Blocked IPs">
-                {blockedIps.length > 0 ? (
-                    blockedIps.map((ip, index) => (
-                        <div
-                            key={index}
-                            className="bg-gray-800 rounded-lg px-4 py-2 mb-2"
-                        >
-                            {ip}
+                {/* Blocked IPs */}
+                <Section title="Blocked IPs">
+                    {blockedIps.length > 0 ? (
+                        blockedIps.map((ip, index) => (
+                            <div
+                                key={index}
+                                className="bg-gray-800 rounded-lg px-4 py-2 mb-2"
+                            >
+                                {ip}
+                            </div>
+                        ))
+                    ) : (
+                        <div className="text-gray-400 italic">
+                            No blocked IPs.
                         </div>
-                    ))
-                ) : (
-                    <div className="text-gray-400 italic">No blocked IPs.</div>
-                )}
-            </Section>
+                    )}
+                </Section>
 
-            {/* Logs */}
-            <LogSection
-                logs={logs}
-                onResetLogs={resetLogs}
-                onExportLogs={exportLogs}
-            />
+                {/* Logs */}
+                <LogSection
+                    logs={logs}
+                    onResetLogs={resetLogs}
+                    onExportLogs={exportLogs}
+                />
+            </div>
         </div>
     );
 }
