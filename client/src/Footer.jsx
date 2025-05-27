@@ -85,7 +85,7 @@ const Footer = () => {
 
             {/* Bottom */}
             <div className="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-                © 2025 Intrusion Detection System | DAA Project
+                © 2025 Intrusion Detection System | Cybersecurity Project
             </div>
         </div>
     );

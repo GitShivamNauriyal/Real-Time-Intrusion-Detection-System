@@ -6316,5 +6316,11 @@
         "type": "ACK Scan Detected",
         "ip": "20.189.173.12",
         "count": 21
+    },
+    {
+        "timestamp": "2025-05-28T05:00:15.521327",
+        "type": "ACK Scan Detected",
+        "ip": "13.89.179.8",
+        "count": 21
     }
 ]
